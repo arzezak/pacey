@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 module Pacey
-  class Commit
+  class Change
   end
 end
