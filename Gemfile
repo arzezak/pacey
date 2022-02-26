@@ -4,6 +4,7 @@ source "https://rubygems.org"
 
 gemspec
 
-gem "rake", "~> 13.0"
+gem "debug", "~> 1.4"
 gem "minitest", "~> 5.0"
+gem "rake", "~> 13.0"
 gem "standard", "~> 1.3"
