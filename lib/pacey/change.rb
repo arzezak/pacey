@@ -8,16 +8,16 @@ module Pacey
       @stat = stat
     end
 
-    def deletions
-      stat[/\d+(?=\sdeletions?)/].to_i
-    end
-
     def files
       stat[/\d+(?=\sfiles?\schanged)/].to_i
     end
 
     def insertions
       stat[/\d+(?=\sinsertions?)/].to_i
+    end
+
+    def deletions
+      stat[/\d+(?=\sdeletions?)/].to_i
     end
   end
 end

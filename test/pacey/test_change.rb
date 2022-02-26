@@ -18,4 +18,12 @@ class TestChange < Minitest::Test
   def test_that_it_responds_to_deletions
     assert_equal 1, @change.deletions
   end
+
+  def test_that_it_returns_zero_when_missing
+    change = Pacey::Change.new("")
+
+    assert_equal 0, change.files
+    assert_equal 0, change.insertions
+    assert_equal 0, change.deletions
+  end
 end
