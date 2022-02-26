@@ -11,5 +11,9 @@ module Pacey
     def files
       stat[/\d+(?=\sfiles?\schanged)/].to_i
     end
+
+    def insertions
+      stat[/\d+(?=\sinsertions?)/].to_i
+    end
   end
 end

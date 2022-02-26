@@ -12,7 +12,7 @@ class TestChange < Minitest::Test
   end
 
   def test_that_it_responds_to_insertions
-    assert @change
+    assert 8, @change.insertions
   end
 
   def test_that_it_responds_to_deletions
