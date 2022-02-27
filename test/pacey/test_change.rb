@@ -19,7 +19,7 @@ class TestChange < Minitest::Test
     assert_equal 1, @change.deletions
   end
 
-  def test_that_it_returns_zero_when_missing
+  def test_that_it_returns_zero
     change = Pacey::Change.new("")
 
     assert_equal 0, change.files
