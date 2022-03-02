@@ -10,13 +10,21 @@ module Pacey
     end
 
     def parse
-      command.split("\n").map(&:strip)
+      lines.map(&prepare)
     end
 
     private
 
+    def prepare
+      proc { |line| line.strip.split(/\n{2}\s/) }
+    end
+
+    def lines
+      command.split("\\").reject(&:empty?)
+    end
+
     def command
-      `git log --format='' --shortstat --since=#{from} --until=#{to}`
+      `git log --format="\\%cd" --shortstat --since=#{from} --until=#{to}`
     end
   end
 end
