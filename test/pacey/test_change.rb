@@ -4,7 +4,14 @@ require "test_helper"
 
 class TestChange < Minitest::Test
   def setup
-    @change = Pacey::Change.new("3 files changed, 8 insertions(+), 1 deletion(-)")
+    @change = Pacey::Change.new(
+      "Sat Feb 26 21:23:48 2022 -0300",
+      "3 files changed, 8 insertions(+), 1 deletion(-)"
+    )
+  end
+
+  def test_that_it_has_a_date
+    assert @change.date < Time.now
   end
 
   def test_that_it_responds_to_files
@@ -20,10 +27,10 @@ class TestChange < Minitest::Test
   end
 
   def test_that_it_returns_zero
-    change = Pacey::Change.new("")
-
-    assert_equal 0, change.files
-    assert_equal 0, change.insertions
-    assert_equal 0, change.deletions
+    @change.stub :stat, "" do
+      assert_equal 0, @change.files
+      assert_equal 0, @change.insertions
+      assert_equal 0, @change.deletions
+    end
   end
 end
