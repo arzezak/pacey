@@ -9,18 +9,22 @@ module Pacey
       @to = to
     end
 
-    def parse
-      lines.map(&prepare)
+    def changes
+      Change.collection(parse)
     end
 
     private
 
-    def prepare
-      proc { |line| line.strip.split(/\n{2}\s/) }
+    def parse
+      lines.map(&prepare)
     end
 
     def lines
       command.split("\\").reject(&:empty?)
+    end
+
+    def prepare
+      ->(line) { line.strip.split(/\n{2}\s/) }
     end
 
     def command

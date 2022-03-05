@@ -11,6 +11,10 @@ module Pacey
       @stat = stat
     end
 
+    def self.collection(changes)
+      changes.map { |change| new(*change) }
+    end
+
     def files
       stat[/\d+(?=\sfiles?\schanged)/].to_i
     end
